@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Plinko Game</title>
+    <title>Plinko</title>
     <style>
       body {
         display: flex;
@@ -221,13 +221,14 @@
       }
 
       // Create sinks at the bottom as rectangles
-      const sinkWidth = 36;
+      // Update the sink dimensions
+      const sinkWidth = 45; // Increased from 36
       const NUM_SINKS = 15;
       for (let i = 0; i < NUM_SINKS; i++) {
         const x = WIDTH / 2 + (i - 7.5) * sinkWidth + obstacleRadius;
         const y = HEIGHT - 240;
         const width = sinkWidth;
-        const height = width;
+        const height = width; // Square shape maintained
         sinks.push({ x, y, width, height });
       }
 
@@ -462,10 +463,14 @@
         if (balance >= BALL_COST) {
           updateBalance(-BALL_COST);
 
-          const colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00"];
+          const colors = ["#FFC0CB"];
           const randomColor = colors[Math.floor(Math.random() * colors.length)];
-          const maxOffset = 20; // Reduced for better control
-          const randomOffset = (Math.random() - 0.5) * maxOffset;
+
+          // Heavily bias the initial position towards center
+          const maxOffset = 20;
+          // Use gaussian-like distribution for more center bias
+          const randomOffset =
+            (Math.random() + Math.random() + Math.random() - 1.5) * maxOffset;
 
           const newBall = new AnimatedBall(
             pad(WIDTH / 2 + randomOffset),
@@ -474,9 +479,12 @@
             randomColor
           );
 
-          // Add slight bias towards center
-          const centerBias = 1;
-          newBall.vx = pad((Math.random() - 0.5) * (1 - centerBias));
+          // Strong center bias for velocity
+          const centerBias = 0.8; // Increased from 0.3 to 0.8 for stronger center bias
+          // Use gaussian-like distribution for velocity too
+          const randomVelocity =
+            (Math.random() + Math.random() + Math.random() - 1.5) / 3;
+          newBall.vx = pad(randomVelocity * (1 - centerBias));
           newBall.vy = 0;
           newBall.hasLanded = false;
           balls.push(newBall);
@@ -605,8 +613,12 @@
 
           const colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00"];
           const randomColor = colors[Math.floor(Math.random() * colors.length)];
-          const maxOffset = 20; // Reduced for better control
-          const randomOffset = (Math.random() - 0.5) * maxOffset;
+
+          // Heavily bias the initial position towards center
+          const maxOffset = 20;
+          // Use gaussian-like distribution for more center bias
+          const randomOffset =
+            (Math.random() + Math.random() + Math.random() - 1.5) * maxOffset;
 
           const newBall = new AnimatedBall(
             pad(WIDTH / 2 + randomOffset),
@@ -615,9 +627,12 @@
             randomColor
           );
 
-          // Add slight bias towards center
-          const centerBias = 0.3;
-          newBall.vx = pad((Math.random() - 0.5) * (1 - centerBias));
+          // Strong center bias for velocity
+          const centerBias = 0.8; // Increased from 0.3 to 0.8 for stronger center bias
+          // Use gaussian-like distribution for velocity too
+          const randomVelocity =
+            (Math.random() + Math.random() + Math.random() - 1.5) / 3;
+          newBall.vx = pad(randomVelocity * (1 - centerBias));
           newBall.vy = 0;
           newBall.hasLanded = false;
           balls.push(newBall);
