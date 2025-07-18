@@ -339,6 +339,8 @@
         spots.forEach((type, index) => {
           const button = document.createElement("button");
           button.className = "gem";
+          // Store the gem type in a data attribute
+          button.dataset.type = type;
           // Prevents re-clicking
           button.onclick = () => {
             if (button.classList.contains("revealed") || !gameActive) return;
@@ -410,11 +412,7 @@
         const grid = document.getElementById("gemsGrid");
         const gems = grid.children;
         Array.from(gems).forEach((gem, index) => {
-          // We need to know the type to reveal it correctly
-          // The original onclick contains this info
-          const type = gem.onclick.toString().includes('"mine"')
-            ? "mine"
-            : "safe";
+          const type = gem.dataset.type; // Use the stored type
           setTimeout(() => {
             gem.classList.add("revealed");
             gem.classList.add(type);
