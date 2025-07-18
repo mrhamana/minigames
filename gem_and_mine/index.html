@@ -29,7 +29,7 @@
       /* --- Game Setup --- */
       .game-setup {
         background: #374151;
-        padding: 20px;
+        padding: 5px;
         border-radius: 12px;
         margin-bottom: 30px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -40,7 +40,7 @@
       }
 
       label[for="gemCount"] {
-        font-size: 1.1rem;
+        font-size: 3rem;
         font-weight: 500;
         color: #d1d5db;
       }
@@ -68,6 +68,8 @@
         padding: 10px 20px;
         border: none;
         border-radius: 8px;
+        font-size: large;
+        font-family: "Inter", "Segoe UI", Arial, sans-serif;
         font-weight: 500;
         cursor: pointer;
         transition: all 0.2s ease;
@@ -262,7 +264,7 @@
       </div>
 
       <div class="game-setup">
-        <label for="gemCount">Number of Mines (1-24):</label>
+        <label for="gemCount">💣</label>
         <input type="number" id="gemCount" min="1" max="24" value="5" />
         <button onclick="startGame()">Start Game</button>
       </div>
