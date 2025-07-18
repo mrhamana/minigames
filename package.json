@@ -1,0 +1,23 @@
+{
+  "name": "minigames",
+  "version": "1.0.0",
+  "description": "fun collection of games ",
+  "homepage": "https://github.com/mrhamana/minigames#readme",
+  "bugs": {
+    "url": "https://github.com/mrhamana/minigames/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrhamana/minigames.git"
+  },
+  "license": "ISC",
+  "author": "Saugat Khatiwada",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run dev"
+  },
+  "dependencies": {
+    "vercel": "^44.4.3"
+  }
+}
